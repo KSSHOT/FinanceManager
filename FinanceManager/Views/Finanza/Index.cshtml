@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FinanceManager.Models.Finanza>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center">Administra tus Finanzas</h1>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <a asp-action="Create" class="btn btn-primary">Crear nuevo Movimiento</a>
+            
+        </div>
+        
+        <!-- Mostrar el total de capital -->
+        <div>
+            <strong>Total Capital Actual: </strong>
+            <span class="badge badge-success" style="color: black;">@ViewBag.TotalCapital.ToString("C")</span>
+        </div>
+        <div>
+            <a asp-action="Index" asp-route-sortOrder="@ViewBag.DateSortParm" class="btn btn-dark ms-2 btn-sm">
+                @if (ViewBag.DateSortParm == "date_desc")
+                {
+                    <span>Ordenar por Fecha (Ascendente)</span>
+                }
+                else
+                {
+                    <span>Ordenar por Fecha (Descendente)</span>
+                }
+            </a>
+        </div>
+    </div>
+    
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Tipo</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Fecha</th>
+                <th scope="col" class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                    <td>$@Html.DisplayFor(modelItem => item.Monto)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Categoria.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td>@item.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

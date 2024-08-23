@@ -1,0 +1,57 @@
+﻿@model FinanceManager.Models.Finanza
+
+@{
+    ViewData["Title"] = "Detalles del Movimiento Financiero";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Detalles del Movimiento Financiero</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Detalles</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 fw-bold">
+                            @Html.DisplayNameFor(model => model.Tipo)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Tipo)
+                        </dd>
+                        <dt class="col-sm-4 fw-bold">
+                            @Html.DisplayNameFor(model => model.Monto)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Monto)
+                        </dd>
+                        <dt class="col-sm-4 fw-bold">
+                            @Html.DisplayNameFor(model => model.Categoria)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Categoria.Nombre)
+                        </dd>
+                        <dt class="col-sm-4 fw-bold">
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Descripcion)
+                        </dd>
+                        <dt class="col-sm-4 fw-bold">
+                            @Html.DisplayNameFor(model => model.Fecha)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Model.Fecha.ToString("dd/MM/yyyy")
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
