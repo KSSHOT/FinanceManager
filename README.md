@@ -32,7 +32,7 @@
 - Crea una base de datos llamada FinanceDB en SQL Server.
 - Ejecuta las siguientes instrucciones SQL para crear las tablas:
 
-```bash
+```
     -- Tabla Secundaria: Categoria
         CREATE TABLE Categoria (
             Id INT IDENTITY(1,1) PRIMARY KEY,
